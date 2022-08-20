@@ -1,6 +1,6 @@
 import requests
 import time
-from PIL import Image
+#from PIL import Image
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
