@@ -18,10 +18,11 @@ abc = "7974:TYO"
 #--------------------------------------------------------------------------------------------------------------------------------------
 #株価取得
 my_share = share.Share('7974.T')
-symbol_data = None
- 
+yahoo = None
+
 try:
     yahoo = my_share.get_historical(share.PERIOD_TYPE_DAY, 2, share.FREQUENCY_TYPE_DAY, 1)
+    print(yahoo)
     today = round(yahoo["close"][1], 2)
     yesterday = round(yahoo["close"][0], 2)
     ratio = round(today - yesterday, 2)
@@ -29,7 +30,7 @@ except YahooFinanceError as e:
     print(e.message)
     sys.exit(1)
  
-print(yahoo)
+
 print(ratio)
 
 #--------------------------------------------------------------------------------------------------------------------------------------
