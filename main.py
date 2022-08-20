@@ -10,6 +10,23 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
+
+#--------------------------------------------------------------------------------------------------------------------------------------
+#株価取得
+my_share = share.Share('MSFT')
+symbol_data = None
+ 
+try:
+    yahoo = my_share.get_historical(share.PERIOD_TYPE_DAY, 2, share.FREQUENCY_TYPE_DAY, 1)
+    today = round(yahoo["close"][1], 2)
+    yesterday = round(yahoo["close"][0], 2)
+    ratio = round(today - yesterday, 2)
+except YahooFinanceError as e:
+    print(e.message)
+    sys.exit(1)
+ 
+print(yahoo)
+print(ratio)
 #--------------------------------------------------------------------------------------------------------------------------------------
 # Chromeヘッドレスモード起動
 options = webdriver.ChromeOptions()
@@ -35,16 +52,3 @@ time.sleep(2)
 driver.save_screenshot('image.png')
 time.sleep(1)
 driver.quit()
-
-#--------------------------------------------------------------------------------------------------------------------------------------
-#株価取得
-my_share = share.Share('MSFT')
-symbol_data = None
- 
-try:
-    symbol_data = my_share.get_historical(share.PERIOD_TYPE_DAY, 2, share.FREQUENCY_TYPE_DAY, 1)
-except YahooFinanceError as e:
-    print(e.message)
-    sys.exit(1)
- 
-print(symbol_data)
