@@ -30,8 +30,6 @@ driver.set_window_size(windowWidth, windowHeight)
 time.sleep(2)
 driver.save_screenshot('image.png')
 time.sleep(1)
-apple = driver.find_element(By.XPATH, "//*[@id=\"idxdtlPrice\"]/em/text()")
-print(apple)
 driver.quit()
 
 
