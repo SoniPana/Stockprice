@@ -59,7 +59,7 @@ time.sleep(1)
 driver.quit()
 
 #--------------------------------------------------------------------------------------------------------------------------------------
-text = '今日の' + 'test' + 'の株価は' + today + 'ドル' + 'で、前日比は' + ratio + 'です。'
+text = '今日の' + 'test' + 'の株価は' + str(today) + 'ドル' + 'で、前日比は' + str(ratio) + 'です。'
 content = {'content': text}
 headers = {'Content-Type': 'application/json'}
 with open('image.png', 'rb') as f:
