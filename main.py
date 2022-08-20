@@ -30,7 +30,7 @@ driver.set_window_size(windowWidth, windowHeight)
 time.sleep(2)
 driver.save_screenshot('image.png')
 time.sleep(1)
-apple = driver.find_element(By.XPATH, "/html/body/table/tbody/tr/td[1]/div/div[2]/div[1]/div/table/tbody/tr[1]/td/em/text()")
+apple = driver.find_element(By.XPATH, "//*[@id="idxdtlPrice"]/em/text()")
 print(apple)
 driver.quit()
 
