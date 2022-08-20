@@ -21,5 +21,6 @@ jobs:
           pip install python-dotenv
           pip install selenium
           pip install requests
-          #pip install pillow
+          pip install pillow
+          pip install yahoo_finance_api2
           python main.py
