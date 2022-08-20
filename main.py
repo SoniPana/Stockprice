@@ -49,16 +49,20 @@ WebDriverWait(driver, 15).until(EC.presence_of_all_elements_located)
   
 # ウインドウ幅・高さ指定
 windowSizeWidth = 800
-windowSizeHeight = 1600
+windowSizeHeight = 600
 #windowWidth = windowSizeWidth if windowSizeWidth else driver.execute_script('return document.body.scrollWidth;')
 #windowHeight = windowSizeHeight if windowSizeHeight else driver.execute_script('return document.body.scrollHeight;')
 driver.set_window_size(windowSizeWidth, windowSizeHeight)
 
 # 処理後一時待機,スクリーンショット格納,ブラウザ稼働終了
 time.sleep(2)
-driver.save_screenshot('image.png')
+driver.save_screenshot('before.png')
 time.sleep(1)
 driver.quit()
+
+# 画像トリミング
+im = Image.open('before.png')
+im.crop((35, 145, 640, 645)).save('image.png', quality=95)
 
 #--------------------------------------------------------------------------------------------------------------------------------------
 text = '今日の' + 'test' + 'の株価は' + str(today) + 'ドル' + 'で、前日比は' + str(ratio) + 'でした。'
