@@ -3,6 +3,7 @@ import os
 import sys
 import json
 import requests
+from bs4 import BeautifulSoup
 from PIL import Image
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
@@ -15,7 +16,17 @@ webhook_url = os.environ.get("WEBHOOK")
 abc = "7974:TYO"
 #--------------------------------------------------------------------------------------------------------------------------------------
 #株価取得
-
+url = "https://finance.yahoo.co.jp/quote/7974.T"
+r = requests.get(url)
+soup = BeautifulSoup(r.text, 'html.parser')
+rs = soup.find(class_='_3rXWJKZF')
+rs = [i.strip() for i in rs.text.splitlines()]
+rs = [i for i in rs if i != ""]
+today = rs[0]
+rs = soup.find(class_='_1-yujUee Y_utZE_b')
+rs = [i.strip() for i in rs.text.splitlines()]
+rs = [i for i in rs if i != ""]
+ratio = rs[0]
 
 #--------------------------------------------------------------------------------------------------------------------------------------
 # Chromeヘッドレスモード起動
@@ -45,7 +56,7 @@ driver.quit()
 
 # 画像トリミング
 im = Image.open('before.png')
-im.crop((35, 145, 640, 645)).save('image.png', quality=95)
+im.crop((0, 145, 750, 600)).save('image.png', quality=95)
 
 #--------------------------------------------------------------------------------------------------------------------------------------
 text = '今日の' + 'test' + 'の株価は' + str(today) + 'ドル' + 'で、前日比は' + str(ratio) + 'でした。'
