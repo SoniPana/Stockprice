@@ -25,5 +25,5 @@ jobs:
           pip install selenium
           pip install requests
           pip install pillow
-          pip install yahoo_finance_api2
+          pip install beautifulsoup4
           python main.py
