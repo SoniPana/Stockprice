@@ -1,4 +1,5 @@
 import time
+import os
 import sys
 import requests
 from PIL import Image
@@ -11,7 +12,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 #--------------------------------------------------------------------------------------------------------------------------------------
-webhook_url = 
+webhook_url = os.environ.get("WEBHOOK")
 list = 123
 #--------------------------------------------------------------------------------------------------------------------------------------
 #株価取得
@@ -57,7 +58,7 @@ time.sleep(1)
 driver.quit()
 
 #--------------------------------------------------------------------------------------------------------------------------------------
-content = {'content': '@everyone\n時間割が更新されました。'}
+content = {'content': 'test'}
 headers = {'Content-Type': 'application/json'}
 with open('image.png', 'rb') as f:
     file_bin = f.read()
