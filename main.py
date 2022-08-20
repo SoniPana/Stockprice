@@ -1,11 +1,15 @@
-import requests
 import time
-#from PIL import Image
+import sys
+import requests
+from PIL import Image
+from yahoo_finance_api2 import share
+from yahoo_finance_api2.exceptions import YahooFinanceError
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+
 
 # Chromeヘッドレスモード起動
 options = webdriver.ChromeOptions()
@@ -33,3 +37,13 @@ time.sleep(1)
 driver.quit()
 
 
+my_share = share.Share('MSFT')
+symbol_data = None
+ 
+try:
+    symbol_data = my_share.get_historical(share.PERIOD_TYPE_DAY, 1, share.FREQUENCY_TYPE_DAY, 1)
+except YahooFinanceError as e:
+    print(e.message)
+    sys.exit(1)
+ 
+print(symbol_data)
