@@ -1,0 +1,25 @@
+name: Get stock price
+on:
+  workflow_dispatch:
+ #schedule:
+  #- cron: "30 20 * * *"  #5時半に動作
+
+jobs:
+  selenium:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.7'
+          architecture: 'x64'
+      - run: |
+          python -m pip install --upgrade pip
+          pip install get-chrome-driver --upgrade
+          sudo apt-get -y install fonts-ipafont-gothic
+          sudo apt-get -y install fonts-ipafont-mincho
+          pip install python-dotenv
+          pip install selenium
+          pip install requests
+          pip install pillow
+          python main.py
