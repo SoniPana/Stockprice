@@ -32,5 +32,5 @@ driver.save_screenshot('image.png')
 time.sleep(1)
 driver.quit()
 
-apple = driver.find_element_by_xpath("/html/body/table/tbody/tr/td[1]/div/div[2]/div[1]/div/table/tbody/tr[1]/td/em/text()")
+apple = driver.find_element(By.XPATH, "/html/body/table/tbody/tr/td[1]/div/div[2]/div[1]/div/table/tbody/tr[1]/td/em/text()")
 print(apple)
