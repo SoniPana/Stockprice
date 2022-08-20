@@ -10,7 +10,9 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-
+#--------------------------------------------------------------------------------------------------------------------------------------
+webhook_url = 
+list = 123
 #--------------------------------------------------------------------------------------------------------------------------------------
 #株価取得
 my_share = share.Share('MSFT')
@@ -27,6 +29,7 @@ except YahooFinanceError as e:
  
 print(yahoo)
 print(ratio)
+
 #--------------------------------------------------------------------------------------------------------------------------------------
 # Chromeヘッドレスモード起動
 options = webdriver.ChromeOptions()
@@ -52,3 +55,12 @@ time.sleep(2)
 driver.save_screenshot('image.png')
 time.sleep(1)
 driver.quit()
+
+#--------------------------------------------------------------------------------------------------------------------------------------
+content = {'content': '@everyone\n時間割が更新されました。'}
+headers = {'Content-Type': 'application/json'}
+with open('image.png', 'rb') as f:
+    file_bin = f.read()
+image = {'upload' : ('image.png', file_bin)}
+response = requests.post(webhook_url, json.dumps(content), headers=headers)
+response = requests.post(webhook_url, files = image)
