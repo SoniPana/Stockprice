@@ -47,10 +47,10 @@ WebDriverWait(driver, 15).until(EC.presence_of_all_elements_located)
   
 # ウインドウ幅・高さ指定
 windowSizeWidth = 800
-windowSizeHeight = 600
-windowWidth = windowSizeWidth if windowSizeWidth else driver.execute_script('return document.body.scrollWidth;')
-windowHeight = windowSizeHeight if windowSizeHeight else driver.execute_script('return document.body.scrollHeight;')
-driver.set_window_size(windowWidth, windowHeight)
+windowSizeHeight = 1600
+#windowWidth = windowSizeWidth if windowSizeWidth else driver.execute_script('return document.body.scrollWidth;')
+#windowHeight = windowSizeHeight if windowSizeHeight else driver.execute_script('return document.body.scrollHeight;')
+driver.set_window_size(windowSizeWidth, windowSizeHeight)
 
 # 処理後一時待機,スクリーンショット格納,ブラウザ稼働終了
 time.sleep(2)
@@ -59,7 +59,8 @@ time.sleep(1)
 driver.quit()
 
 #--------------------------------------------------------------------------------------------------------------------------------------
-content = {'content': 'test'}
+text = '今日の' + 'test' + 'の株価は' + today + 'ドル' + 'で、前日比は' + ratio + 'です。'
+content = {'content': text}
 headers = {'Content-Type': 'application/json'}
 with open('image.png', 'rb') as f:
     file_bin = f.read()
