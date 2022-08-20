@@ -1,6 +1,7 @@
 import time
 import os
 import sys
+import json
 import requests
 from PIL import Image
 from yahoo_finance_api2 import share
