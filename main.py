@@ -22,7 +22,8 @@ yahoo = None
 
 try:
     yahoo = my_share.get_historical(share.PERIOD_TYPE_DAY, 2, share.FREQUENCY_TYPE_DAY, 1)
-    if len(yahoo) < 2:
+    print(yahoo["close"])
+    if len(yahoo["close"]) < 2:
         today = round(yahoo["close"][0], 2)
         ratio = '確認できません'
     else:
