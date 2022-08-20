@@ -14,10 +14,10 @@ from selenium.webdriver.support import expected_conditions as EC
 
 #--------------------------------------------------------------------------------------------------------------------------------------
 webhook_url = os.environ.get("WEBHOOK")
-list = 123
+abc = "7974:TYO"
 #--------------------------------------------------------------------------------------------------------------------------------------
 #株価取得
-my_share = share.Share('MSFT')
+my_share = share.Share('7974.T')
 symbol_data = None
  
 try:
@@ -42,7 +42,7 @@ driver = webdriver.Chrome('chromedriver',options=options)
 driver.implicitly_wait(10)
 
 # サイトURL取得
-driver.get("https://www.sbisec.co.jp/ETGate/?_ControlID=WPLETmgR001Control&_PageID=WPLETmgR001Mdtl20&_DataStoreID=DSWPLETmgR001Control&_ActionID=DefaultAID&burl=iris_indexDetail&cat1=market&cat2=index&dir=tl1-idxdtl%7Ctl2-.N225%7Ctl5-jpn&file=index.html&getFlg=on")
+driver.get("https://www.google.com/finance/quote/" + abc + "?hl=ja&gl=JP&window=1M")
 WebDriverWait(driver, 15).until(EC.presence_of_all_elements_located)
   
 # ウインドウ幅・高さ指定
