@@ -22,16 +22,16 @@ yahoo = None
 
 try:
     yahoo = my_share.get_historical(share.PERIOD_TYPE_DAY, 2, share.FREQUENCY_TYPE_DAY, 1)
-    print(yahoo)
-    today = round(yahoo["close"][1], 2)
-    yesterday = round(yahoo["close"][0], 2)
-    ratio = round(today - yesterday, 2)
+    if len(yahoo) < 2:
+        today = round(yahoo["close"][0], 2)
+        ratio = '確認できません'
+    else:
+        today = round(yahoo["close"][1], 2)
+        yesterday = round(yahoo["close"][0], 2)
+        ratio = round(today - yesterday, 2)
 except YahooFinanceError as e:
     print(e.message)
     sys.exit(1)
- 
-
-print(ratio)
 
 #--------------------------------------------------------------------------------------------------------------------------------------
 # Chromeヘッドレスモード起動
@@ -60,7 +60,7 @@ time.sleep(1)
 driver.quit()
 
 #--------------------------------------------------------------------------------------------------------------------------------------
-text = '今日の' + 'test' + 'の株価は' + str(today) + 'ドル' + 'で、前日比は' + str(ratio) + 'です。'
+text = '今日の' + 'test' + 'の株価は' + str(today) + 'ドル' + 'で、前日比は' + str(ratio) + 'でした。'
 content = {'content': text}
 headers = {'Content-Type': 'application/json'}
 with open('image.png', 'rb') as f:
