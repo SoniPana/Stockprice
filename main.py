@@ -10,7 +10,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-
+#--------------------------------------------------------------------------------------------------------------------------------------
 # Chromeヘッドレスモード起動
 options = webdriver.ChromeOptions()
 options.headless = True
@@ -36,12 +36,13 @@ driver.save_screenshot('image.png')
 time.sleep(1)
 driver.quit()
 
-
+#--------------------------------------------------------------------------------------------------------------------------------------
+#株価取得
 my_share = share.Share('MSFT')
 symbol_data = None
  
 try:
-    symbol_data = my_share.get_historical(share.PERIOD_TYPE_DAY, 1, share.FREQUENCY_TYPE_DAY, 1)
+    symbol_data = my_share.get_historical(share.PERIOD_TYPE_DAY, 2, share.FREQUENCY_TYPE_DAY, 1)
 except YahooFinanceError as e:
     print(e.message)
     sys.exit(1)
