@@ -66,11 +66,12 @@ for x, y in d.items():
   im.crop((0, 115, 770, 550)).save('image.png', quality=95)
 
 #--------------------------------------------------------------------------------------------------------------------------------------
+  # Discordに送信
   text = '今日の' + x + 'の株価は' + str(today) + y['currency'] + 'で、前日比は' + str(ratio) + y['currency'] +'でした。'
   content = {'content': text}
   headers = {'Content-Type': 'application/json'}
   with open('image.png', 'rb') as f:
-      file_bin = f.read()
+    file_bin = f.read()
   image = {'upload' : ('image.png', file_bin)}
   response = requests.post(webhook_url, json.dumps(content), headers=headers)
   response = requests.post(webhook_url, files = image)
