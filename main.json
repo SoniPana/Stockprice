@@ -25,5 +25,12 @@
         "yahoo": "NVDA",
         "google": "NVDA:NASDAQ",
         "currency": "ドル"
-    }
+    },
+    
+    "テスラ": 
+    {
+        "yahoo": "TSLA",
+        "google": "TSLA:NASDAQ",
+        "currency": ""
+    },
 }
