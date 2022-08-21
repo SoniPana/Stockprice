@@ -1,0 +1,22 @@
+{
+    "任天堂": 
+    {
+        "yahoo": "7974.T",
+        "google": "7974:TYO",
+        "currency": "円"
+    },
+    
+    "SONY":
+    {
+        "yahoo": "6758.T",
+        "google": "6758:TYO",
+        "currency": "円"
+    },
+    
+    "NVIDIA":
+    {
+        "yahoo": "NVDA",
+        "google": "NVDA:NASDAQ",
+        "currency": "ドル"
+    }
+}
