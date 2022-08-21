@@ -10,4 +10,10 @@
         "google": "6758:TYO",
         "currency": "\u5186"
     }
+ "NVIDIA":
+    {
+        "yahoo": "NVDA",
+        "google": "NVDA:NASDAQ",
+        "currency": "\u30c9\u30eb"
+    }
 }
