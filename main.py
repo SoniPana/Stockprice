@@ -18,7 +18,7 @@ def format(cl):
   rs = soup.find(class_=cl)
   rs = [i.strip() for i in rs.text.splitlines()]
   rs = [i for i in rs if i != ""]
-  return rs
+  return rs[0]
 #--------------------------------------------------------------------------------------------------------------------------------------
 for x, y in l.items():
   if y['currency'] == '円':
@@ -26,10 +26,8 @@ for x, y in l.items():
     url = "https://finance.yahoo.co.jp/quote/7974.T"
     r = requests.get(url)
     soup = BeautifulSoup(r.text, 'html.parser')
-    format('_3rXWJKZF')
-    today = rs[0]
-    format('_1-yujUee Y_utZE_b')
-    ratio = rs[0]
+    today = format('_3rXWJKZF')
+    ratio = format('_1-yujUee Y_utZE_b')
   
 #--------------------------------------------------------------------------------------------------------------------------------------
   # Chromeヘッドレスモード起動
