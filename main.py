@@ -21,7 +21,7 @@ def format(cl):
   return rs
 #--------------------------------------------------------------------------------------------------------------------------------------
 for x, y in l.items():
-  if y['currency'] = '円':
+  if y['currency'] == '円':
     # 株価取得
     url = "https://finance.yahoo.co.jp/quote/7974.T"
     r = requests.get(url)
