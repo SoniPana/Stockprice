@@ -14,25 +14,31 @@ from selenium.webdriver.support import expected_conditions as EC
 #--------------------------------------------------------------------------------------------------------------------------------------
 # 準備
 webhook_url = os.environ.get("WEBHOOK")
-d = {'任天堂':{'yahoo':'7974.T', 'google':'7974:TYO', 'currency':'円'}, 'SONY':{'yahoo':'6758.T', 'google':'6758:TYO', 'currency':'円'}}
 with open('main.json', mode='r') as f:
-    l = json.load(f)
+  d = json.load(f)
 
 def format(cl):
-  rs = soup.find(class_=cl)
-  rs = [i.strip() for i in rs.text.splitlines()]
-  rs = [i for i in rs if i != ""]
-  return rs[0]
+  j = soup.select(f'[class="{cl}"]')
+  k = j[0]
+  k = [i.strip() for i in k.text.splitlines()]
+  k = [i for i in k if i != ""]
+  return k[0]
 #--------------------------------------------------------------------------------------------------------------------------------------
 # 辞書の長さ分繰り返す
-for x, y in l.items():
+for x, y in d.items():
+  # 株価取得
   if y['currency'] == '円':
-    # 株価取得
     url = "https://finance.yahoo.co.jp/quote/" + y['yahoo']
-    r = requests.get(url)
-    soup = BeautifulSoup(r.text, 'html.parser')
+  else:
+    url = "https://stocks.finance.yahoo.co.jp/us/detail/" + y['yahoo']
+  r = requests.get(url)
+  soup = BeautifulSoup(r.text, 'html.parser')
+  if y['currency'] == '円':
     today = format('_3rXWJKZF')
     ratio = format('_1-yujUee Y_utZE_b')
+  else:
+    today = format('stoksPrice')
+    ratio = format('icoDownRed yjMSt')
   
 #--------------------------------------------------------------------------------------------------------------------------------------
   # Chromeヘッドレスモード起動
