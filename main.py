@@ -14,7 +14,7 @@ from selenium.webdriver.support import expected_conditions as EC
 #--------------------------------------------------------------------------------------------------------------------------------------
 # 準備
 webhook_url = os.environ.get("WEBHOOK")
-with open('main.json', mode='r') as f:
+with open('main.json', mode='r', encoding='utf-8') as f:
   d = json.load(f)
 
 def format(cl):
