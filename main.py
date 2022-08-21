@@ -12,18 +12,21 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 #--------------------------------------------------------------------------------------------------------------------------------------
+# 準備
 webhook_url = os.environ.get("WEBHOOK")
 l = {'任天堂':{'yahoo':'7974.T', 'google':'7974:TYO', 'currency':'円'}, 'SONY':{'yahoo':'6758.T', 'google':'6758:TYO', 'currency':'円'}}
+
 def format(cl):
   rs = soup.find(class_=cl)
   rs = [i.strip() for i in rs.text.splitlines()]
   rs = [i for i in rs if i != ""]
   return rs[0]
 #--------------------------------------------------------------------------------------------------------------------------------------
+# 辞書の長さ分繰り返す
 for x, y in l.items():
   if y['currency'] == '円':
     # 株価取得
-    url = "https://finance.yahoo.co.jp/quote/7974.T"
+    url = "https://finance.yahoo.co.jp/quote/" + y['yahoo']
     r = requests.get(url)
     soup = BeautifulSoup(r.text, 'html.parser')
     today = format('_3rXWJKZF')
@@ -54,7 +57,7 @@ for x, y in l.items():
   im.crop((0, 115, 770, 550)).save('image.png', quality=95)
 
 #--------------------------------------------------------------------------------------------------------------------------------------
-  text = '今日の' + 'test' + 'の株価は' + str(today) + y['currency'] + 'で、前日比は' + str(ratio) + 'でした。'
+  text = '今日の' + x + 'の株価は' + str(today) + y['currency'] + 'で、前日比は' + str(ratio) + 'でした。'
   content = {'content': text}
   headers = {'Content-Type': 'application/json'}
   with open('image.png', 'rb') as f:
