@@ -31,6 +31,13 @@
     {
         "yahoo": "TSLA",
         "google": "TSLA:NASDAQ",
-        "currency": ""
+        "currency": "ドル"
     },
+    
+    "インテル": 
+    {
+        "yahoo": "INTC",
+        "google": "INTC:NASDAQ",
+        "currency": "ドル"
+    }
 }
