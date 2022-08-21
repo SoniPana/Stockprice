@@ -16,7 +16,7 @@ from selenium.webdriver.support import expected_conditions as EC
 webhook_url = os.environ.get("WEBHOOK")
 d = {'任天堂':{'yahoo':'7974.T', 'google':'7974:TYO', 'currency':'円'}, 'SONY':{'yahoo':'6758.T', 'google':'6758:TYO', 'currency':'円'}}
 with open('main.json', mode='r') as f:
-    l = json.load(l)
+    l = json.load(f)
 
 def format(cl):
   rs = soup.find(class_=cl)
