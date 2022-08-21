@@ -39,6 +39,7 @@ for x, y in d.items():
   else:
     today = format('stoksPrice')
     ratio = format('icoDownRed yjMSt')
+    ratio = ratio.split('（')[0]
   
 #--------------------------------------------------------------------------------------------------------------------------------------
   # Chromeヘッドレスモード起動
@@ -65,7 +66,7 @@ for x, y in d.items():
   im.crop((0, 115, 770, 550)).save('image.png', quality=95)
 
 #--------------------------------------------------------------------------------------------------------------------------------------
-  text = '今日の' + x + 'の株価は' + str(today) + y['currency'] + 'で、前日比は' + str(ratio) + 'でした。'
+  text = '今日の' + x + 'の株価は' + str(today) + y['currency'] + 'で、前日比は' + str(ratio) + y['currency'] +'でした。'
   content = {'content': text}
   headers = {'Content-Type': 'application/json'}
   with open('image.png', 'rb') as f:
