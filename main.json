@@ -13,6 +13,13 @@
         "currency": "円"
     },
     
+    "日本航空": 
+    {
+        "yahoo": "9201.T",
+        "google": "9201:TYO",
+        "currency": "円"
+    },
+    
     "NVIDIA":
     {
         "yahoo": "NVDA",
