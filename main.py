@@ -67,7 +67,7 @@ for x, y in d.items():
 
 #--------------------------------------------------------------------------------------------------------------------------------------
   # Discordに送信
-  text = '今日の' + x + 'の株価は' + str(today) + y['currency'] + 'で、前日比は' + str(ratio) + y['currency'] +'でした。'
+  text = '---------------------------------------------------------------------------------------\n今日の' + x + 'の株価は' + str(today) + y['currency'] + 'で、前日比は' + str(ratio) + y['currency'] +'でした。'
   content = {'content': text}
   headers = {'Content-Type': 'application/json'}
   with open('image.png', 'rb') as f:
