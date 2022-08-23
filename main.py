@@ -27,6 +27,7 @@ def format(cl):
 # 辞書の長さ分繰り返す
 for x, y in d.items():
   # 株価取得
+  time.sleep(5)
   if y['currency'] == '円':
     url = "https://finance.yahoo.co.jp/quote/" + y['yahoo']
   else:
